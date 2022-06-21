@@ -5,35 +5,23 @@ require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     // Here is the HTML formatting for our mission target div.
-    /*
+    let div = document.getElementById('missionTarget');
+    div.innerHTML = `
                  <h2>Mission Destination</h2>
                  <ol>
-                     <li>Name: </li>
-                     <li>Diameter: </li>
-                     <li>Star: ${star}</li>
-                     <li>Distance from Earth: </li>
-                     <li>Number of Moons: </li>
+                     <li>Name: ${json[2].name} </li>
+                     <li>Diameter: ${json[2].diameter} </li>
+                     <li>Star: ${json[2].star}</li>
+                     <li>Distance from Earth: ${json[2].distance} </li>
+                     <li>Number of Moons: ${json[2].moons} </li>
                  </ol>
-                 <img src="">
-    */
+                 <img src="${json[2].imageUrl}">
+                 `
+
 }
 
 function validateInput(testInput) {
 
-    // let pilotNameInput = document.querySelector("input[name=pilotName]");
-    // let copilotNameInput = document.querySelector("input[name=copilotName]");
-    // let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
-    // let cargoMassInput = document.querySelector("input[name=cargoMass]");
-
-    // if (pilotNameInput || copilotNameInput === "") {
-    //     return "Empty";
-    // } else if (isNan(fuelLevelInput) || isNan(cargoMassInput)) {
-    //     return "Not a Number";
-    // } else if (typeof (pilotNameInput) || typeof (copilotNameInput) === 'number') {
-    //     return "Is a Number";
-    // } else {
-    //     return false;
-    // }
     if (testInput === "") {
         return "Empty";
     } else if (isNaN(testInput)) {
@@ -68,7 +56,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         document.getElementById('faultyItems').style.visibility = 'visible';
         document.getElementById('cargoStatus') = `${cargoMassInput} is too much mass for the shuttle to take off.`
         element.setAttribute('launchStatus', "Shuttle not ready for launch").style.color = 'red';
-    }else {
+    } else {
         element.setAttribute('launchStatus', "Shuttle is ready for launch").style.color = 'green';
     }
 }
@@ -76,13 +64,16 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch().then(function (response) {
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response) {
+        return response.json();
     });
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
+    let planet = json.name;
+    return planet.Math.random();
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
