@@ -12,16 +12,17 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     div.innerHTML = `
                  <h2>Mission Destination</h2>
                  <ol>
-                     <li>Name: </li>
-                     <li>Diameter: </li>
+                     <li>Name: ${name} </li>
+                     <li>Diameter:${diameter} </li>
                      <li>Star: ${star}</li>
-                     <li>Distance from Earth:  </li>
-                     <li>Number of Moons: </li>
+                     <li>Distance from Earth: ${distance}  </li>
+                     <li>Number of Moons: ${moons} </li>
                  </ol>
-                 <img src="">
-                 `
+                 <img src="${imageUrl}">
+                 `;
     //populates mission target div
 }
+
 
 function validateInput(testInput) {
 
@@ -29,7 +30,7 @@ function validateInput(testInput) {
         return "Empty";
     } else if (isNaN(testInput)) {
         return "Not a Number";
-    } else if (typeof (testInput) === 'number') {
+    } else if (!isNaN(testInput)) {
         return "Is a Number"
     }
 
@@ -77,7 +78,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 //         result = json;
 //     });
 //     return planetsReturned;
-// returns list of all planet objects
+//     // returns list of all planet objects
 // }
 
 async function myFetch() {
