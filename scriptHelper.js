@@ -50,7 +50,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     } else if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
         alert("Make sure to enter valid information for each field!")
     } else if (fuelLevel < 10000) {
-        console.log(document.getElementById('pilotStatus').innerHTML = `${pilot} is ready.`);
+        document.getElementById('pilotStatus').innerHTML = `${pilot} is ready.`;
         document.getElementById('copilotStatus').innerHTML = `${copilot} is ready.`;
         document.getElementById('faultyItems').style.visibility = 'visible';
         document.getElementById('fuelStatus').innerHTML = `${fuelLevel}L is not enough fuel for the journey.`
@@ -58,6 +58,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         launchInfo.style.color = 'red';
     }
     else if (cargoLevel > 10000) {
+        document.getElementById('pilotStatus').innerHTML = `${pilot} is ready.`;
+        document.getElementById('copilotStatus').innerHTML = `${copilot} is ready.`;
         document.getElementById('faultyItems').style.visibility = 'visible';
         document.getElementById('cargoStatus').innerHTML = `${cargoLevel}kg is too much mass for the shuttle to take off.`
         launchInfo.innerHTML = "Shuttle is not ready for launch";
