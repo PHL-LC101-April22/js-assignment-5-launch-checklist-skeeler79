@@ -40,33 +40,40 @@ function validateInput(testInput) {
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let array = [pilot, copilot, fuelLevel, cargoLevel]
+    let launchInfo = document.getElementById('launchStatus');
     if (array.includes('')) {
         alert("All fields required!")
     } else if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
         alert("Make sure to enter valid information for each field!")
     } else if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
+        // document.getElementById('faultyItems').style.visibility = 'visible';
         alert("Make sure to enter valid information for each field!")
     }
-    // let pilotNameInput = document.querySelector("input[name=pilotName]");
-    // let copilotNameInput = document.querySelector("input[name=copilotName]");
-    // let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
-    // let cargoMassInput = document.querySelector("input[name=cargoMass]");
-    // debugger
-    document.getElementById('pilotStatus') = `${pilot} is ready.`;
-    document.getElementById('copilotStatus') = `${copilot} is ready.`;
-    if (fuelLevel < 10000) {
+
+
+    else if (fuelLevel < 10000) {
+        console.log(document.getElementById('pilotStatus').innerHTML = `${pilot} is ready.`);
+        document.getElementById('copilotStatus').innerHTML = `${copilot} is ready.`;
         document.getElementById('faultyItems').style.visibility = 'visible';
-        document.getElementById('fuelStatus') = `${fuelLevel} is not enough fuel for the journey.`
-        element.setAttribute('launchStatus', "Shuttle not ready for launch").style.color = 'red';
+        document.getElementById('fuelStatus').innerHTML = `${fuelLevel} is not enough fuel for the journey.`
+        launchInfo.innerHTML = "Shuttle is not ready for launch";
+        launchInfo.style.color = 'red';
+
     }
-    if (cargoLevel > 10000) {
+    else if (cargoLevel > 10000) {
         document.getElementById('faultyItems').style.visibility = 'visible';
-        document.getElementById('cargoStatus') = `${cargoLevel} is too much mass for the shuttle to take off.`
-        element.setAttribute('launchStatus', "Shuttle not ready for launch").style.color = 'red';
+        document.getElementById('cargoStatus').innerHTML = `${cargoLevel} is too much mass for the shuttle to take off.`
+        launchInfo.innerHTML = "Shuttle is not ready for launch";
+        launchInfo.style.color = 'red';
+
     } else {
-        element.setAttribute('launchStatus', "Shuttle is ready for launch").style.color = 'green';
+        launchInfo.innerHTML = "Shuttle is ready for launch";
+        launchInfo.style.color = 'green';
     }
 }
+
+
+
 
 // async function myFetch() {
 //     let planetsReturned;
