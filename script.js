@@ -17,8 +17,7 @@ window.addEventListener("load", function () {
         // Below this comment, call the appropriate helper functions to pick a planet from the list of planets and add that information to your destination.
         let newPlanet = pickPlanet(listedPlanets);
         console.log(newPlanet);
-
-        console.log(addDestinationInfo(document, newPlanet.name, newPlanet.diameter, newPlanet.star, newPlanet.distance, newPlanet.moons, newPlanet.image));
+        addDestinationInfo(document, newPlanet.name, newPlanet.diameter, newPlanet.star, newPlanet.distance, newPlanet.moons, newPlanet.image);
     });
 
 
@@ -42,18 +41,3 @@ window.addEventListener("load", function () {
 
 
 
-// let form = document.querySelector("form");
-// let pilotNameInput = document.querySelector("input[name=pilotName]");
-// let copilotNameInput = document.querySelector("input[name=copilotName]");
-// let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
-// let cargoMassInput = document.querySelector("input[name=cargoMass]");
-
-
-//     
-// });
-// let newPlanetName = newPlanet.name;
-        // let newPlanetDiameter = newPlanet.diameter;
-        // let newPlanetStar = newPlanet.star;
-        // let newPlanetDistance = newPlanet.distance;
-        // let newPlanetMoons = newPlanet.moons;
-        // let newPlanetImageUrl = newPlanet.imageUrl;
